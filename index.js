@@ -9,15 +9,20 @@ let pantry = [proteinOptions, grainOptions, vegetableOptions, drinkOptions, dess
 let meal = [];
 let numOfMeals = 0;
 let error = false;
+let mealString = "" // kyles way of doing this with a string
 
 //Part A #2: Construct a for loop that assembles a meal for each of 6 astronauts.
-for (let i = 0; i < pantry.length; i++){
+for (let i = 0; i < 6; i++){ // originally had 6 as proteinOptions.length
   
-  for ( j = 0; j < pantry.length; j++) {
+  let mealString = `Meal #${i + 1} `; // kyles way of doing this with a string
+
+  for ( let j = 0; j < pantry.length; j++) { // could also use .push here
     meal[j] = pantry[j][i];
+   mealString += ` ${pantry[j][i]}`; // kyles way of doing this with a string
   }
 
 console.log(`Your meals will be, Meal:#${i + 1} ${meal.join(", ")}`);
+console.log(mealString);  // kyles way of doing this with a string
 }
 
 //Part C #5: Using a while loop, ask the user to select the number of meals to assemble.  Validate the input to make sure it is an integer from 1 - 6.
@@ -47,6 +52,27 @@ for (let i = 0; i <numOfMeals; i++){
 
 
   
+}
+
+//////// kyle's soloution
+const mealNumString = input.question("Yo how many meals you wanna make?: ");
+const mealNum = Number(mealNumString);
+
+if (mealNum < 1 || mealNum > 6) {
+  console.log("That's an error please only imput 1 - 6");
+} else {
+  let mealsCreated = 0;
+  while (mealsCreated < mealNum) {
+    const myMealArray = [proteinOptions[mealsCreated],grainOptions[mealsCreated],vegetableOptions[mealsCreated],drinkOptions[mealsCreated],dessertOptions[mealsCreated]];
+    const myMeal = `Meal #${mealsCreated + 1}: ${proteinOptions[mealsCreated]}, ${grainOptions[mealsCreated]}, ${vegetableOptions[mealsCreated]}, ${drinkOptions[mealsCreated]}, ${dessertOptions[mealsCreated]},`;
+    console.log(myMeal);
+
+  if (myMealArray.includes("kale")){
+    console.log(`Don’t worry, you can have double chocolate tomorrow.`)
+  }
+
+    mealsCreated = mealsCreated +1;
+  }
 }
 
 //Skill boosts: 
